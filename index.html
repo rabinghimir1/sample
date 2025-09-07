@@ -1,130 +1,294 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gauri Ghimire</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gauri Ghimire — Personal Website</title>
+  <meta name="description" content="Personal website to showcase portfolio, blog, and contact info." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: #f5f5f5;
-      color: #333;
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent-1:#7c3aed;
+      --accent-2:#06b6d4;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --max-width:1100px;
+      --ff: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--ff);
+      background: linear-gradient(180deg, #071024 0%, var(--bg) 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:32px 20px;
+      display:flex;justify-content:center;
+    }
+    .wrap{width:100%;max-width:var(--max-width)}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:28px
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      display:grid;place-items:center;font-weight:800;color:white;font-size:20px;box-shadow:0 6px 18px rgba(12,18,36,0.6)
+    }
+    .top-info{color:var(--muted);font-size:13px;text-align:right}
+    .nepali-date{margin-top:4px;color:var(--muted)}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    nav a:hover{color:inherit;background:var(--glass)}
+    .cta{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));padding:8px 14px;border-radius:10px;color:#fff;text-decoration:none;font-weight:700}
+
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-bottom:36px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:28px;border-radius:var(--radius);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    h1{margin:0;font-size:36px;letter-spacing:-0.02em}
+    .subtitle{color:var(--muted);margin-top:8px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+    .tag{background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);padding:8px 10px;border-radius:999px;font-weight:600;color:var(--muted);font-size:13px}
+
+    .profile-card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;gap:14px;align-items:center}
+    .avatar{width:84px;height:84px;border-radius:14px;background:linear-gradient(135deg,var(--accent-2),var(--accent-1));display:grid;place-items:center;font-weight:800}
+    .meta small{color:var(--muted)}
+    .socials{display:flex;gap:10px;margin-top:10px}
+    .btn-ghost{padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);text-decoration:none}
+
+    .grid-2{display:grid;grid-template-columns:1fr 360px;gap:24px}
+    .card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 20px rgba(3,8,20,0.6)}
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .project{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+    .project h4{margin:6px 0 2px}
+    .project p{margin:0;color:var(--muted);font-size:14px}
+
+    .posts{display:flex;flex-direction:column;gap:10px}
+    .post{display:flex;gap:12px;align-items:center}
+    .post .thumb{width:86px;height:66px;border-radius:8px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));flex:0 0 86px}
+
+    form{display:grid;gap:12px}
+    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;font-size:14px}
+    textarea{min-height:120px}
+    .row{display:flex;gap:12px}
+    button{padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent-2),var(--accent-1));color:#fff;font-weight:700;cursor:pointer}
+
+    footer{margin-top:32px;color:var(--muted);font-size:13px;padding:18px 0;text-align:center}
+
+    @media (max-width:992px){
+      .hero{grid-template-columns:1fr;}
+      .grid-2{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr}
+      nav{display:none}
     }
 
-    header {
-      background: #4B0082;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
-    }
-
-    nav {
-      background: #333;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 3rem 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .about, .contact {
-      background: white;
-      margin-bottom: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 2rem;
-    }
-
-    h2 {
-      color: #4B0082;
-    }
-
-    .profile-pic {
-      max-width: 100%;
-      width: 300px;
-      border-radius: 12px;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-
-    .about-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #4B0082;
-      color: white;
-    }
-
-    @media (min-width: 768px) {
-      .about-content {
-        flex-direction: row;
-        text-align: left;
-      }
-
-      .about-content img {
-        margin-right: 2rem;
-      }
+    @media (max-width:520px){
+      h1{font-size:28px}
+      body{padding:18px}
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>Gauri Ghimire</h1>
-    <p>Welcome to my personal space on the web</p>
-  </header>
-
-  <nav>
-    <a href="#about">About Me</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <div class="about-content">
-      <img src="gauri-photo.png" alt="Gauri Ghimire" class="profile-pic">
-      <div>
-        <p>Namaste! I'm Gauri Ghimire. I'm proud of my culture, heritage, and background. This site reflects my journey, values, and the beautiful surroundings of my hometown. Feel free to explore and connect.</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">GG</div>
+        <div>
+          <div style="font-weight:800">Gauri Ghimire</div>
+          <small style="color:var(--muted)">Designer · Developer · Creator</small>
+        </div>
       </div>
-    </div>
-  </section>
+      <div class="top-info">
+        <div id="currentDateTime"></div>
+        <div class="nepali-date" id="nepaliDate"></div>
+        <div>Email: <a href="mailto:email-example@gaurighimire.com.np" style="color:#fff;text-decoration:none">email-example@gaurighimire.com.np</a></div>
+      </div>
+    </header>
 
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Email me at: <strong>gauri@example.com</strong></p>
-    <p>More links and socials coming soon!</p>
-  </section>
+    <main>
+      <section class="hero">
+        <div class="hero-card">
+          <h1>Hi — I'm Gauri Ghimire.</h1>
+          <p class="subtitle">I build beautiful, accessible websites and digital products. I focus on clean design, clear code, and delightful user experiences.</p>
+          <div class="tags">
+            <div class="tag">HTML</div>
+            <div class="tag">CSS</div>
+            <div class="tag">JavaScript</div>
+            <div class="tag">UX Design</div>
+          </div>
 
-  <footer>
-    &copy; 2025 Gauri Ghimire. All rights reserved.
-  </footer>
+          <div style="display:flex;gap:12px;margin-top:22px;align-items:center">
+            <a class="cta" href="#work">See my work</a>
+            <a class="btn-ghost" href="#contact">Hire me</a>
+          </div>
 
+          <div style="margin-top:22px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+            <div class="card" style="padding:12px;border-radius:10px;min-width:140px"> 
+              <div style="font-weight:800">5+</div>
+              <small class="subtitle">Years experience</small>
+            </div>
+            <div class="card" style="padding:12px;border-radius:10px;min-width:140px"> 
+              <div style="font-weight:800">30+</div>
+              <small class="subtitle">Projects shipped</small>
+            </div>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="avatar">GG</div>
+          <div class="meta">
+            <div style="font-weight:700">Gauri Ghimire</div>
+            <small>Based in Kathmandu, Nepal</small>
+            <div class="socials">
+              <a class="btn-ghost" href="#">Twitter</a>
+              <a class="btn-ghost" href="#">GitHub</a>
+              <a class="btn-ghost" href="#">LinkedIn</a>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="grid-2">
+        <div>
+          <div id="about" class="card" style="margin-bottom:16px">
+            <div class="section-title">
+              <h3 style="margin:0">About</h3>
+              <small style="color:var(--muted)">Quick bio</small>
+            </div>
+            <p style="color:var(--muted)">I’m a front-end developer and designer who enjoys turning ideas into polished, accessible products. I specialize in performance-focused websites and working closely with teams to ship results. Outside work, I enjoy photography and hiking across Nepal.</p>
+          </div>
+
+          <div id="work" class="card">
+            <div class="section-title">
+              <h3 style="margin:0">Selected Projects</h3>
+              <a href="#" style="color:var(--muted);text-decoration:none">View all →</a>
+            </div>
+            <div class="projects">
+              <div class="project">
+                <div style="flex:1">
+                  <h4>Project One</h4>
+                  <p>Landing page for a fintech startup — performance and accessibility focused.</p>
+                </div>
+              </div>
+              <div class="project">
+                <div style="flex:1">
+                  <h4>Project Two</h4>
+                  <p>Design system and components for internal product teams.</p>
+                </div>
+              </div>
+              <div class="project">
+                <div class="project" style="grid-column:span 2">
+                  <h4>Project Three</h4>
+                  <p>Portfolio platform with custom CMS integration.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="blog" class="card" style="margin-top:16px">
+            <div class="section-title">
+              <h3 style="margin:0">Recent posts</h3>
+              <a href="#" style="color:var(--muted);text-decoration:none">All posts →</a>
+            </div>
+            <div class="posts">
+              <article class="post">
+                <div class="thumb"></div>
+                <div>
+                  <div style="font-weight:700">How I improved page speed by 40%</div>
+                  <small class="subtitle">Mar 2025 · 6 min read</small>
+                </div>
+              </article>
+              <article class="post">
+                <div class="thumb"></div>
+                <div>
+                  <div style="font-weight:700">Designing accessible components</div>
+                  <small class="subtitle">Jan 2025 · 8 min read</small>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card" style="margin-bottom:16px">
+            <h4 style="margin:0">Contact</h4>
+            <p class="subtitle" style="margin-top:8px">Interested in working together? Send a message.</p>
+            <form id="contactForm">
+              <input type="text" id="name" placeholder="Your name" required>
+              <input type="email" id="email" placeholder="Your email" required>
+              <textarea id="message" placeholder="How can I help?" required></textarea>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <small class="subtitle">I'll reply within a few days.</small>
+                <button type="submit">Send</button>
+              </div>
+            </form>
+            <div id="formMessage" style="margin-top:10px;color:var(--accent-2);display:none"></div>
+          </div>
+
+          <div class="card">
+            <h4 style="margin:0">Skills</h4>
+            <p class="subtitle" style="margin-top:8px">HTML · CSS · JavaScript · Accessibility · SEO</p>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
+            <h4 style="margin:0">Availability</h4>
+            <p class="subtitle" style="margin-top:8px">Open to freelance and full‑time roles.</p>
+          </div>
+        </aside>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Gauri Ghimire. Built with care.</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function updateDateTime(){
+      const now = new Date();
+      document.getElementById('currentDateTime').textContent = now.toLocaleString();
+
+      // Simple Nepali date approximation (Bikram Sambat ~ +56 years + 8 months)
+      const bsYear = now.getFullYear() + 56;
+      let bsMonth = now.getMonth() + 9; // approx offset
+      let bsDay = now.getDate();
+      if(bsMonth > 12){
+        bsMonth -= 12;
+      }
+      const nepaliMonths = ["बैशाख","जेठ","असार","साउन","भदौ","असोज","कार्तिक","मंसिर","पुष","माघ","फागुन","चैत"];
+      const nepaliDate = `${bsDay} ${nepaliMonths[bsMonth-1]} ${bsYear}`;
+      document.getElementById('nepaliDate').textContent = "(नेपाली मिति: " + nepaliDate + ")";
+    }
+    setInterval(updateDateTime,1000);
+    updateDateTime();
+
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('formMessage');
+    form.addEventListener('submit', e=>{
+      e.preventDefault();
+      msg.style.display = 'block';
+      msg.textContent = 'Thanks — your message has been sent (demo).';
+      form.reset();
+      setTimeout(()=>msg.style.display='none',4000);
+    });
+  </script>
 </body>
 </html>
