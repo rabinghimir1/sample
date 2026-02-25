@@ -1,193 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gauri Ghimire | Personal Website</title>
+    <meta charset="UTF-8">
+    <title>Gauri Ghimire | Personal Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f6f9;
+            color: #222;
+        }
 
-<style>
-:root {
-    --primary: #3AB0A4;
-    --dark: #1e1e1e;
-    --light: #ffffff;
-    --gray: #f2f2f2;
-}
+        header {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
 
-body {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    background: var(--light);
-    color: #2A2A2A;
-    transition: 0.4s;
-}
+        header h1 {
+            margin: 0;
+            font-size: 42px;
+        }
 
-.dark-mode {
-    background: var(--dark);
-    color: white;
-}
+        header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
 
-header {
-    padding: 80px 20px;
-    text-align: center;
-    background: linear-gradient(135deg, var(--primary), #2A2A2A);
-    color: white;
-}
+        nav {
+            background: #111;
+            text-align: center;
+            padding: 10px;
+        }
 
-header img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid white;
-    margin-bottom: 20px;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
 
-h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 40px;
-    margin-bottom: 10px;
-}
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
 
-.btn {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 25px;
-    background: white;
-    color: var(--primary);
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-}
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
 
-.btn:hover {
-    background: #ddd;
-}
+        .time-box {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #ffd700;
+        }
 
-section {
-    padding: 60px 20px;
-    max-width: 1000px;
-    margin: auto;
-}
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
 
-h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--primary);
-    margin-bottom: 20px;
-}
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #2c5364;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: var(--gray);
-    padding: 20px;
-    border-radius: 10px;
-    transition: 0.3s;
-}
-
-.dark-mode .card {
-    background: #2c2c2c;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-}
-
-.contact p {
-    margin: 8px 0;
-}
-
-footer {
-    background: #2A2A2A;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-.toggle-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-@media(max-width:600px){
-    h1 { font-size: 28px; }
-}
-</style>
+        button:hover {
+            background: #1e3c4a;
+        }
+    </style>
 </head>
 
 <body>
 
-<button class="toggle-btn" onclick="toggleMode()">🌙 Dark Mode</button>
-
 <header>
-    <img src="profile.jpg" alt="Gauri Ghimire Photo">
     <h1>Gauri Ghimire</h1>
-    <p>Aspiring Professional | Creative Thinker | Lifelong Learner</p>
-    <a href="mailto:gaurighimire@ghimire.com.np" class="btn">Contact Me</a>
-    <a href="cv.pdf" class="btn" download>Download CV</a>
+    <p>Student | Dreamer | Lifelong Learner</p>
+    <div class="time-box">
+        <div id="nepaliTime"></div>
+        <div id="nepaliDate"></div>
+    </div>
 </header>
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        Hello! I am Gauri Ghimire. I am passionate about creativity, learning new skills, and building meaningful work.
-        I enjoy problem solving, communication, and continuous growth.
-    </p>
-</section>
+<nav>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-<section>
-    <h2>Skills</h2>
-    <div class="grid">
-        <div class="card">Communication & Leadership</div>
-        <div class="card">Problem Solving</div>
-        <div class="card">Time Management</div>
-        <div class="card">Creativity & Design Thinking</div>
-        <div class="card">MS Office / Google Workspace</div>
-        <div class="card">HTML & CSS</div>
+<section id="about">
+    <div class="card">
+        <h2>About Me</h2>
+        <p>
+            Hello! I'm Gauri Ghimire, a passionate learner from Nepal who believes 
+            that education is the foundation of a powerful future. I am dedicated 
+            to personal growth, academic excellence, and building meaningful skills 
+            that will shape my journey ahead.
+        </p>
+        <p>
+            I value discipline, creativity, and continuous improvement. 
+            My goal is to grow intellectually and contribute positively to society.
+        </p>
     </div>
 </section>
 
-<section>
-    <h2>Projects</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Project One</h3>
-            <p>Short description of your project and achievements.</p>
-        </div>
-        <div class="card">
-            <h3>Project Two</h3>
-            <p>Short description of your project and learning outcomes.</p>
-        </div>
+<section id="contact">
+    <div class="card">
+        <h2>Contact Me</h2>
+        <p><strong>Email:</strong> gaurighimire@gaurighimire.com.np</p>
+        <p><strong>Phone:</strong> 98XXXXXXXX</p>
+        <button onclick="alert('Thank you for visiting my website!')">Say Hello</button>
     </div>
-</section>
-
-<section class="contact">
-    <h2>Contact</h2>
-    <p><strong>Email:</strong> gaurighimire@ghimire.com.np</p>
-    <p><strong>Phone:</strong> 9800000000</p>
 </section>
 
 <footer>
-    © 2026 Gauri Ghimire | All Rights Reserved
+    © 2026 gaurighimire.com.np | All Rights Reserved
 </footer>
 
 <script>
-function toggleMode() {
-    document.body.classList.toggle("dark-mode");
-}
+    function updateNepaliTime() {
+        const now = new Date();
+        const options = {
+            timeZone: 'Asia/Kathmandu',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        };
+        document.getElementById("nepaliTime").innerHTML =
+            "Nepali Time (NPT): " + now.toLocaleTimeString('en-US', options);
+
+        const dateOptions = {
+            timeZone: 'Asia/Kathmandu',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        };
+        document.getElementById("nepaliDate").innerHTML =
+            "Date: " + now.toLocaleDateString('en-US', dateOptions);
+    }
+
+    setInterval(updateNepaliTime, 1000);
+    updateNepaliTime();
 </script>
 
 </body>
